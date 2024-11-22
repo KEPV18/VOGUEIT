@@ -1,0 +1,603 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				:root {
+					--background: 220 40% 8%;
+					--foreground: 45 40% 95%;
+					--card: 220 40% 12%;
+					--card-foreground: 45 40% 95%;
+					--primary: 45 95% 55%;
+					--primary-foreground: 220 40% 8%;
+					--secondary: 220 40% 15%;
+					--secondary-foreground: 45 40% 95%;
+					--muted: 220 40% 15%;
+					--muted-foreground: 45 40% 80%;
+					--accent: 45 95% 55%;
+					--accent-foreground: 220 40% 8%;
+					--border: 220 40% 15%;
+				}
+			}
+
+			/* تأثيرات حركية جديدة */
+			.luxury-gradient {
+				background: linear-gradient(
+					135deg,
+					rgba(255, 215, 0, 0.15) 0%,
+					rgba(0, 0, 0, 0.9) 50%,
+					rgba(255, 215, 0, 0.15) 100%
+				);
+			}
+
+			.title-gradient {
+				background: linear-gradient(
+					to right,
+					#ffd700,
+					#fff3b0,
+					#ffd700,
+					#fff3b0
+				);
+				background-size: 300% auto;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				animation: shine 4s linear infinite;
+			}
+
+			@keyframes shine {
+				0% { background-position: 0% center; }
+				100% { background-position: 300% center; }
+			}
+
+			.floating {
+				animation: floating 3s ease-in-out infinite;
+			}
+
+			@keyframes floating {
+				0%, 100% { transform: translateY(0) rotate(-1deg); }
+				50% { transform: translateY(-15px) rotate(1deg); }
+			}
+		</style>
+  </head>
+  <body class="bg-black text-white">
+    <!-- Announcement Bar -->
+    <div class="bg-yellow-400 text-black py-2">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm font-medium">🌟 Free shipping on orders over $200 | Use code: LUXURY2024</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-black/80 border-b border-yellow-400/20">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+          <a href="#" class="text-2xl font-bold title-gradient">VOGUEIT</a>
+          
+          <div class="hidden md:flex items-center space-x-12">
+            <a href="#" class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300 tracking-wide">NEW IN</a>
+            <a href="#" class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300 tracking-wide">COLLECTIONS</a>
+            <a href="#" class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300 tracking-wide">ACCESSORIES</a>
+            <a href="#" class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300 tracking-wide">SALE</a>
+          </div>
+
+          <div class="flex items-center space-x-8">
+            <button class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+            <button class="text-yellow-50 hover:text-yellow-400 transition-colors duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="luxury-gradient min-h-screen relative overflow-hidden">
+      <!-- Background Elements -->
+      <div class="absolute inset-0 bg-[url('/luxury-pattern.png')] opacity-10 animate-pulse"></div>
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-yellow-400/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-yellow-400/20 rounded-full blur-[120px] animate-pulse delay-700"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 container mx-auto px-4 min-h-screen flex items-center">
+        <div class="max-w-4xl mx-auto text-center space-y-4 md:space-y-8 py-20">
+          <!-- Logo -->
+          <div class="floating inline-block mb-4 md:mb-8">
+            <h1 class="text-5xl md:text-8xl font-bold title-gradient tracking-tight">
+              VOGUEIT
+            </h1>
+          </div>
+          
+          <!-- Tagline -->
+          <p class="text-xl md:text-2xl text-yellow-100/80 font-light tracking-wide">
+            Where Luxury Meets Elegance
+          </p>
+          
+          <!-- Buttons -->
+          <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 pt-8 md:pt-12">
+            <button class="group relative px-6 md:px-10 py-3 md:py-4 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 text-black overflow-hidden rounded-sm transition-all duration-500 hover:scale-105 w-full md:w-auto">
+              <span class="relative z-10 font-medium tracking-wider text-base md:text-lg">EXPLORE COLLECTION</span>
+              <div class="absolute inset-0 bg-white/90 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            </button>
+            
+            <button class="group relative px-6 md:px-10 py-3 md:py-4 border border-yellow-400/30 text-yellow-400 overflow-hidden rounded-sm transition-all duration-500 hover:scale-105 w-full md:w-auto">
+              <span class="relative z-10 font-medium tracking-wider text-base md:text-lg">VIEW LOOKBOOK</span>
+              <div class="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+              <span class="group-hover:text-black relative z-10 transition-colors duration-500">VIEW LOOKBOOK</span>
+            </button>
+          </div>
+
+          <!-- Timer -->
+          <div class="flex justify-center gap-4 mt-8">
+            <div class="bg-black/30 backdrop-blur-sm p-3 md:p-4 rounded-lg">
+              <span class="text-xl md:text-2xl font-bold">24</span>
+              <p class="text-xs md:text-sm">Hours</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Gradient -->
+      <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent"></div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">Categories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-zinc-900 p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-yellow-50">Women's Fashion</h3>
+            <p class="text-yellow-50/60">Explore the latest trends in women's fashion.</p>
+            <button class="mt-4 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">Shop Now</button>
+          </div>
+          <div class="bg-zinc-900 p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-yellow-50">Men's Fashion</h3>
+            <p class="text-yellow-50/60">Discover the new arrivals in men's fashion.</p>
+            <button class="mt-4 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">Shop Now</button>
+          </div>
+          <div class="bg-zinc-900 p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-yellow-50">Accessories</h3>
+            <p class="text-yellow-50/60">Find the perfect accessories to complement your style.</p>
+            <button class="mt-4 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+        <!-- Product Card 1 -->
+        <div class="group relative bg-zinc-900 rounded-none shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:translate-y-[-10px]">
+          <div class="relative overflow-hidden">
+            <div class="absolute top-2 left-2 z-10">
+              <span class="bg-red-500 text-white px-2 py-1 rounded-full text-sm">New</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800" 
+                 alt="Elegant Dress"
+                 class="w-full h-[300px] sm:h-[400px] object-cover transform transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Elegant Evening Dress</h3>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold">$299.99</span>
+                <span class="text-sm text-gray-500 line-through ml-2">$399.99</span>
+              </div>
+              <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="group relative bg-zinc-900 rounded-none shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:translate-y-[-10px]">
+          <div class="relative overflow-hidden">
+            <div class="absolute top-2 left-2 z-10">
+              <span class="bg-yellow-400 text-black px-2 py-1 rounded-full text-sm">Sale</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800" 
+                 alt="Luxury Handbag"
+                 class="w-full h-[300px] sm:h-[400px] object-cover transform transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Designer Leather Bag</h3>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold">$459.99</span>
+                <span class="text-sm text-gray-500 line-through ml-2">$599.99</span>
+              </div>
+              <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="group relative bg-zinc-900 rounded-none shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:translate-y-[-10px]">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800" 
+                 alt="Luxury Watch"
+                 class="w-full h-[300px] sm:h-[400px] object-cover transform transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Gold Luxury Watch</h3>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold">$1,299.99</span>
+              </div>
+              <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="group relative bg-zinc-900 rounded-none shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:translate-y-[-10px]">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800" 
+                 alt="Designer Shoes"
+                 class="w-full h-[300px] sm:h-[400px] object-cover transform transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Luxury Leather Shoes</h3>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-lg font-semibold">$799.99</span>
+              </div>
+              <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="bg-gradient-to-r from-black via-yellow-900 to-black py-16 my-16 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/luxury-pattern.png')] opacity-5"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="text-white mb-6 md:mb-0">
+            <h3 class="text-3xl font-bold mb-2 gradient-text">Summer Collection 2024</h3>
+            <p class="text-xl">Get up to 50% off on selected items</p>
+          </div>
+          <button class="bg-white text-black px-8 py-3 hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/20">
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto py-12 px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Free Shipping -->
+        <div class="flex items-center space-x-4 p-6 bg-zinc-900/50 border border-yellow-400/10 rounded-none backdrop-blur-sm hover:border-yellow-400/30 transition-colors">
+          <div class="bg-yellow-400 p-3 rounded-full">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-yellow-50">Free Shipping</h3>
+            <p class="text-yellow-50/60">On orders over $100</p>
+          </div>
+        </div>
+
+        <!-- Money Back -->
+        <div class="flex items-center space-x-4 p-6 bg-zinc-900/50 border border-yellow-400/10 rounded-none backdrop-blur-sm hover:border-yellow-400/30 transition-colors">
+          <div class="bg-yellow-400 p-3 rounded-full">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-yellow-50">Money Back</h3>
+            <p class="text-yellow-50/60">30 days guarantee</p>
+          </div>
+        </div>
+
+        <!-- Secure Payment -->
+        <div class="flex items-center space-x-4 p-6 bg-zinc-900/50 border border-yellow-400/10 rounded-none backdrop-blur-sm hover:border-yellow-400/30 transition-colors">
+          <div class="bg-yellow-400 p-3 rounded-full">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-yellow-50">Secure Payment</h3>
+            <p class="text-yellow-50/60">100% secure checkout</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">Our Story</h2>
+        <p class="text-xl text-yellow-100/80 font-light tracking-wide">
+          VOGUEIT was founded with the vision of bringing luxury and elegance to the forefront of fashion. Our journey began in 2020, and since then, we have been committed to providing our customers with the finest quality and the most exquisite designs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">What Our Customers Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 bg-zinc-900 border border-yellow-400/10">
+            <img src="https://i.pravatar.cc/150?img=1" alt="Sarah M." class="w-16 h-16 rounded-full mx-auto mb-4"/>
+            <div class="flex justify-center mb-4">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="text-yellow-50/80 mb-4">"The quality of their products is exceptional. The dress I ordered exceeded my expectations!"</p>
+            <p class="font-semibold">- Sarah M.</p>
+            <p class="text-sm text-yellow-50/60">Verified Buyer</p>
+          </div>
+          
+          <div class="p-6 bg-zinc-900 border border-yellow-400/10">
+            <img src="https://i.pravatar.cc/150?img=2" alt="John D." class="w-16 h-16 rounded-full mx-auto mb-4"/>
+            <div class="flex justify-center mb-4">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="text-yellow-50/80 mb-4">"Fast shipping and amazing customer service. The packaging was luxurious and the product is perfect!"</p>
+            <p class="font-semibold">- John D.</p>
+            <p class="text-sm text-yellow-50/60">Verified Buyer</p>
+          </div>
+          
+          <div class="p-6 bg-zinc-900 border border-yellow-400/10">
+            <img src="https://i.pravatar.cc/150?img=3" alt="Emma L." class="w-16 h-16 rounded-full mx-auto mb-4"/>
+            <div class="flex justify-center mb-4">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p class="text-yellow-50/80 mb-4">"Their collection is absolutely stunning. Every piece feels luxurious and unique. Worth every penny!"</p>
+            <p class="font-semibold">- Emma L.</p>
+            <p class="text-sm text-yellow-50/60">Verified Buyer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">Style Guide</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <article class="bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" 
+                 alt="Summer Fashion" 
+                 class="w-full h-48 object-cover"/>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Summer Fashion Trends 2024</h3>
+              <p class="text-yellow-50/60 mb-4">Discover the hottest trends this season, from vibrant colors to elegant silhouettes...</p>
+              <a href="#" class="text-yellow-400 hover:underline">Read More →</a>
+            </div>
+          </article>
+
+          <article class="bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" 
+                 alt="Accessorizing Guide" 
+                 class="w-full h-48 object-cover"/>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">The Art of Accessorizing</h3>
+              <p class="text-yellow-50/60 mb-4">Learn how to elevate your outfit with the perfect combination of accessories...</p>
+              <a href="#" class="text-yellow-400 hover:underline">Read More →</a>
+            </div>
+          </article>
+
+          <article class="bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800" 
+                 alt="Sustainable Fashion" 
+                 class="w-full h-48 object-cover"/>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Sustainable Luxury Fashion</h3>
+              <p class="text-yellow-50/60 mb-4">Explore our commitment to sustainable fashion and ethical manufacturing...</p>
+              <a href="#" class="text-yellow-400 hover:underline">Read More →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">Frequently Asked Questions</h2>
+        <div class="text-left space-y-4">
+          <h3 class="text-2xl font-semibold text-yellow-50">What is your return policy?</h3>
+          <p class="text-yellow-50/60">We offer a 30-day return policy on all items. Please contact our support for more details.</p>
+          <h3 class="text-2xl font-semibold text-yellow-50">How can I track my order?</h3>
+          <p class="text-yellow-50/60">Once your order is shipped, you will receive an email with a tracking number.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Support Section -->
+    <section class="container mx-auto my-16 px-4">
+      <div class="text-center space-y-8">
+        <h2 class="text-4xl font-bold title-gradient">Contact Support</h2>
+        <p class="text-xl text-yellow-100/80 font-light tracking-wide">
+          Need help? Reach out to our support team for assistance.
+        </p>
+        <button class="bg-yellow-400 text-black px-8 py-3 hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">Contact Us</button>
+      </div>
+    </section>
+
+    <!-- Main Footer -->
+    <footer class="bg-black text-white border-t border-yellow-400/10">
+      <div class="container mx-auto px-4 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold gradient-text">VOGUEIT</h2>
+            <p class="text-gray-400">Elevating fashion to new heights of luxury and sophistication.</p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><!-- Instagram icon --></svg>
+              </a>
+              <!-- Add more social icons -->
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul class="space-y-4">
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">New Arrivals</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Best Sellers</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Our Story</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Customer Care</h3>
+            <ul class="space-y-4">
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Shipping Info</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Returns</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">Size Guide</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+            <p class="text-gray-400 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+            <form class="space-y-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                class="w-full bg-zinc-900 border border-zinc-800 px-4 py-3 rounded-none focus:outline-none focus:border-yellow-400 transition-colors duration-300"
+              />
+              <button class="w-full bg-yellow-400 text-black px-4 py-3 font-medium hover:bg-yellow-300 transition-colors duration-300">
+                SUBSCRIBE
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="border-t border-zinc-800 mt-16 pt-8 text-center text-gray-400">
+          <p>&copy; 2024 VOGUEIT. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Payment Methods -->
+      <div class="flex justify-center flex-wrap gap-6 mt-8 pb-8">
+        <!-- International Payment Methods -->
+        <img src="https://raw.githubusercontent.com/get-icon/geticon/master/icons/visa.svg" 
+             alt="Visa" 
+             class="h-8 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="https://raw.githubusercontent.com/get-icon/geticon/master/icons/mastercard.svg" 
+             alt="Mastercard" 
+             class="h-8 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="https://raw.githubusercontent.com/get-icon/geticon/master/icons/paypal.svg" 
+             alt="PayPal" 
+             class="h-8 grayscale hover:grayscale-0 transition-all duration-300"/>
+        
+        <!-- Egyptian Payment Methods -->
+        <div class="h-8 px-4 py-1 bg-[#23292F] text-white rounded font-bold text-sm flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 8H4v8h16v-8zm0-2V5H4v4h16zm-6 6h4v2h-4v-2z"/>
+          </svg>
+          Fawry Pay
+        </div>
+
+        <div class="h-8 px-4 py-1 bg-[#008655] text-white rounded font-bold text-sm flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 4c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4zm2 0v16h12V4H6zm3 3h6v2H9V7zm0 4h6v2H9v-2zm0 4h6v2H9v-2z"/>
+          </svg>
+          meeza
+        </div>
+
+        <div class="h-8 px-4 py-1 bg-[#E60000] text-white rounded font-bold text-sm flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.001 20h-10c-1.657 0-3-1.343-3-3V7c0-1.657 1.343-3 3-3h10c1.657 0 3 1.343 3 3v10c0 1.657-1.343 3-3 3zm-10-14c-.552 0-1 .448-1 1v10c0 .552.448 1 1 1h10c.552 0 1-.448 1-1V7c0-.552-.448-1-1-1h-10zm5 11c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"/>
+          </svg>
+          Vodafone Cash
+        </div>
+
+        <div class="h-8 px-4 py-1 bg-[#2D5DA9] text-white rounded font-bold text-sm flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm-1-13v3H8v2h3v3h2v-3h3v-2h-3V7h-2z"/>
+          </svg>
+          InstaPay
+        </div>
+        
+        <!-- Additional Payment Info -->
+        <div class="w-full text-center mt-4">
+          <p class="text-sm text-gray-400">نقبل جميع وسائل الدفع المصرية والعالمية</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const title = document.getElementById('hero-title');
+        setTimeout(() => {
+          title.classList.remove('opacity-0', 'translate-y-4');
+          title.classList.add('opacity-100', 'translate-y-0');
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
