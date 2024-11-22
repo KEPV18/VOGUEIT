@@ -118,7 +118,10 @@
     <nav class="sticky top-0 z-50 backdrop-blur-xl bg-black/80 border-b border-purple-400/20">
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-20">
-          <a href="#" class="text-2xl font-bold title-gradient">BELLAVEE</a>
+          <a href="#" class="flex items-center">
+            <img src="logo.jpg" alt="Logo" class="h-12 mr-3">
+            <span class="text-2xl font-bold title-gradient">BELLAVEE</span>
+          </a>
           
           <div class="hidden md:flex items-center space-x-12">
             <a href="#" class="text-purple-50 hover:text-purple-400 transition-colors duration-300 tracking-wide">NEW IN</a>
@@ -156,10 +159,8 @@
       <div class="relative z-10 container mx-auto px-4 min-h-screen flex items-center">
         <div class="max-w-4xl mx-auto text-center space-y-4 md:space-y-8 py-20">
           <!-- Logo -->
-          <div class="floating inline-block mb-4 md:mb-8">
-            <h1 class="text-5xl md:text-8xl font-bold title-gradient tracking-tight">
-              BELLAVEE
-            </h1>
+          <div class="floating inline-block mb-8 md:mb-12">
+            <img src="logo.jpg" alt="Logo" class="mx-auto h-32 md:h-48 object-contain filter drop-shadow-[0_0_15px_rgba(147,51,234,0.3)]">
           </div>
           
           <!-- Tagline -->
@@ -184,8 +185,20 @@
           <!-- Timer -->
           <div class="flex justify-center gap-4 mt-8">
             <div class="bg-black/30 backdrop-blur-sm p-3 md:p-4 rounded-lg">
-              <span class="text-xl md:text-2xl font-bold">24</span>
+              <span id="days" class="text-xl md:text-2xl font-bold">00</span>
+              <p class="text-xs md:text-sm">Days</p>
+            </div>
+            <div class="bg-black/30 backdrop-blur-sm p-3 md:p-4 rounded-lg">
+              <span id="hours" class="text-xl md:text-2xl font-bold">00</span>
               <p class="text-xs md:text-sm">Hours</p>
+            </div>
+            <div class="bg-black/30 backdrop-blur-sm p-3 md:p-4 rounded-lg">
+              <span id="minutes" class="text-xl md:text-2xl font-bold">00</span>
+              <p class="text-xs md:text-sm">Minutes</p>
+            </div>
+            <div class="bg-black/30 backdrop-blur-sm p-3 md:p-4 rounded-lg">
+              <span id="seconds" class="text-xl md:text-2xl font-bold">00</span>
+              <p class="text-xs md:text-sm">Seconds</p>
             </div>
           </div>
         </div>
@@ -410,7 +423,7 @@
           <div class="p-6 bg-zinc-900 border border-purple-400/10">
             <img src="https://i.pravatar.cc/150?img=3" alt="Emma L." class="w-16 h-16 rounded-full mx-auto mb-4"/>
             <div class="flex justify-center mb-4">
-              ⭐⭐⭐⭐⭐
+              ⭐⭐⭐⭐
             </div>
             <p class="text-purple-50/80 mb-4">"Their collection is absolutely stunning. Every piece feels luxurious and unique. Worth every penny!"</p>
             <p class="font-semibold">- Emma L.</p>
@@ -584,7 +597,7 @@
         
         <!-- Additional Payment Info -->
         <div class="w-full text-center mt-4">
-          <p class="text-sm text-gray-400">نقبل جميع وسائل الدفع المصرية والعالمية</p>
+          <p class="text-sm text-gray-400">نقبل جميع وسائل الدفع المصية والعالمية</p>
         </div>
       </div>
     </footer>
@@ -593,11 +606,49 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const title = document.getElementById('hero-title');
-        setTimeout(() => {
-          title.classList.remove('opacity-0', 'translate-y-4');
-          title.classList.add('opacity-100', 'translate-y-0');
-        }, 300);
+        if (title) {
+          setTimeout(() => {
+            title.classList.remove('opacity-0', 'translate-y-4');
+            title.classList.add('opacity-100', 'translate-y-0');
+          }, 300);
+        }
       });
+    </script>
+    <script>
+      // تحديد تاريخ البداية (22 نوفمبر 2024 الساعة 00:00:00)
+      const startDate = new Date("2024-11-22T00:00:00").getTime();
+      // إضافة 48 ساعة (172800000 مللي ثانية)
+      const countDownDate = startDate + (48 * 60 * 60 * 1000);
+
+      // Update the countdown every 1 second
+      const timer = setInterval(function() {
+        // Get current date and time
+        const now = new Date().getTime();
+        
+        // Find the distance between now and the countdown date
+        const distance = countDownDate - now;
+        
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Display the result
+        document.getElementById("days").textContent = String(days).padStart(2, '0');
+        document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+        document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        
+        // If the countdown is finished, clear the interval
+        if (distance < 0) {
+          clearInterval(timer);
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+        }
+      }, 1000);
     </script>
   </body>
 </html>
